@@ -16,8 +16,8 @@ export default function App() {
   const [passwordGenerated, isPasswordGenerated] = useState(false);
   const [lowercase, setLowercase] = useState(true);
   const [uppercase, setUppercase] = useState(false);
-  const [numbers, useNumbers] = useState(false);
-  const [symbols, useSymbols] = useState(false);
+  const [numbers, setNumbers] = useState(false);
+  const [symbols, setSymbols] = useState(false);
 
   //generate password string:
   const generatePasswordString = (passwordLength: number) => {
@@ -49,7 +49,6 @@ export default function App() {
   const createPassword = (characters: string, passwordLength: number) => {
     let result = '';
     for (let i = 0; i < characters.length; i++) {
-      // const element = array[i];
       const characterIndex = Math.round(Math.random() * characters.length);
       result += characters.charAt(characterIndex);
     }
@@ -58,7 +57,12 @@ export default function App() {
 
   //reset password generator state:
   const resetPasswordState = () => {
-    //
+    setPassword('');
+    isPasswordGenerated(false);
+    setLowercase(true);
+    setUppercase(false);
+    setNumbers(false);
+    setSymbols(false);
   };
 
   return (
